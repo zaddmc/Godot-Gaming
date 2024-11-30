@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://cmlhdfy0o8sau"]
+
+[ext_resource type="Texture2D" uid="uid://ct3iw8g28b5w" path="res://assets/materials/plane_surface/rock_face_diff_4k.jpg" id="1_6r01a"]
+[ext_resource type="Texture2D" uid="uid://5kve2wyx8246" path="res://assets/materials/plane_surface/rock_face_arm_4k.jpg" id="2_ly1qx"]
+[ext_resource type="Texture2D" uid="uid://cqdhm0k550eu3" path="res://assets/materials/plane_surface/rock_face_ao_4k.jpg" id="3_g0odu"]
+[ext_resource type="Texture2D" uid="uid://bs05baphv1bwn" path="res://assets/materials/plane_surface/rock_face_disp_4k.png" id="4_1nkvx"]
+[ext_resource type="Texture2D" uid="uid://cxfeilfofd2pt" path="res://assets/materials/plane_surface/rock_face_nor_gl_4k.png" id="5_77u44"]
+[ext_resource type="Texture2D" uid="uid://grui66gtpltt" path="res://assets/materials/plane_surface/rock_face_rough_4k.png" id="6_yh5kq"]
+
+[resource]
+albedo_texture = ExtResource("1_6r01a")
+roughness_texture = ExtResource("6_yh5kq")
+normal_enabled = true
+normal_texture = ExtResource("5_77u44")
+anisotropy_enabled = true
+anisotropy_flowmap = ExtResource("2_ly1qx")
+ao_enabled = true
+ao_texture = ExtResource("3_g0odu")
+heightmap_texture = ExtResource("4_1nkvx")
