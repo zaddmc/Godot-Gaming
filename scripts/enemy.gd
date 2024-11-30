@@ -7,8 +7,8 @@ var target
 
 func initialize(player, start_pos):
 	target = player
-	print(start_pos)
-	look_at_from_position(start_pos, player.global_position)
+	#print(start_pos)
+	look_at_from_position(start_pos, start_pos + Vector3.FORWARD)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

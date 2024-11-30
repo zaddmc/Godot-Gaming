@@ -17,12 +17,8 @@ albedo_color = Color(0.239084, 0.569494, 0.320299, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_0dw4q"]
 material = SubResource("StandardMaterial3D_sqcv1")
 
-[sub_resource type="Curve3D" id="Curve3D_cu4kn"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.06157, -1.52588e-05, -6.35708, 0, 0, 0, 0, 0, 0, -9.68531, -1.52588e-05, -6.48677, 0, 0, 0, 0, 0, 0, -6.75437, -1.52588e-05, 5.36667, 0, 0, 0, 0, 0, 0, 1.23439, -1.52588e-05, 5.18511, 0, 0, 0, 0, 0, 0, 4.06157, -1.52588e-05, -6.35708),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
+[sub_resource type="BoxMesh" id="BoxMesh_smg34"]
+size = Vector3(14.455, 1, 12.84)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_13ihl")
@@ -40,39 +36,42 @@ shape = SubResource("BoxShape3D_l5fdl")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plane"]
 mesh = SubResource("BoxMesh_mbhhl")
 
+[node name="Bottom_right" type="MeshInstance3D" parent="plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, 29.9949)
+mesh = SubResource("CylinderMesh_0dw4q")
+skeleton = NodePath("../../Player/Spawning_Cylinders/Anti_bottom_right")
+
+[node name="Top_left" type="MeshInstance3D" parent="plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, -30.0051)
+mesh = SubResource("CylinderMesh_0dw4q")
+skeleton = NodePath("../../Player/Spawning_Cylinders")
+
 [node name="Player" parent="." instance=ExtResource("1_mpkly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.194879)
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 6, 1.391)
+current = true
 fov = 72.4083
+
+[node name="Spawning_Cylinders" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.194879)
+visible = false
+
+[node name="Anti_bottom_right" type="MeshInstance3D" parent="Player/Spawning_Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2271, 0, 4.16262)
+mesh = SubResource("CylinderMesh_0dw4q")
+
+[node name="Anti_top_left" type="MeshInstance3D" parent="Player/Spawning_Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.22665, 0, -8.69442)
+mesh = SubResource("CylinderMesh_0dw4q")
+
+[node name="Anti_Spawn_area" type="MeshInstance3D" parent="Player/Spawning_Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -2.264)
+mesh = SubResource("BoxMesh_smg34")
 
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Rats" type="Node3D" parent="Enemies"]
 
-[node name="Spawning_Cylinders" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawning_Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08429, 0, 3.41531)
-mesh = SubResource("CylinderMesh_0dw4q")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spawning_Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90824, 0, 3.45052)
-mesh = SubResource("CylinderMesh_0dw4q")
-skeleton = NodePath("../MeshInstance3D")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spawning_Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65457, 0, -8.20379)
-mesh = SubResource("CylinderMesh_0dw4q")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Spawning_Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97146, 0, -8.13337)
-mesh = SubResource("CylinderMesh_0dw4q")
-
-[node name="Spawn_Path" type="Path3D" parent="Spawning_Cylinders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91703, 1.00893, -1.7131)
-curve = SubResource("Curve3D_cu4kn")
-
-[node name="Spawn_Location" type="PathFollow3D" parent="Spawning_Cylinders/Spawn_Path"]
-transform = Transform3D(0.00943343, 0, 0.999941, 0, 1, 0, -0.999941, 0, 0.00943343, 4.06157, -1.52588e-05, -6.35708)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.433659, 0.493397, -0.753989, 0, 0.836764, 0.547563, 0.901077, -0.237456, 0.36287, -27.227, 11.234, 14.404)
