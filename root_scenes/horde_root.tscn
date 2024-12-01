@@ -50,12 +50,10 @@ skeleton = NodePath("../../Player/Spawning_Cylinders")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 6, 1.391)
-current = true
 fov = 72.4083
 
 [node name="Spawning_Cylinders" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.194879)
-visible = false
 
 [node name="Anti_bottom_right" type="MeshInstance3D" parent="Player/Spawning_Cylinders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2271, 0, 4.16262)
@@ -75,3 +73,4 @@ mesh = SubResource("BoxMesh_smg34")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.433659, 0.493397, -0.753989, 0, 0.836764, 0.547563, 0.901077, -0.237456, 0.36287, -27.227, 11.234, 14.404)
+current = true
