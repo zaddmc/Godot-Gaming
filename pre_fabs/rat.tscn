@@ -1,21 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://dijtra4eo1s0e"]
 
-[ext_resource type="PackedScene" uid="uid://bqvtwhtay44km" path="res://assets/enemies/rat/street_rat_4k.gltf" id="1_4wdfr"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_oysj2"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_j7rg1"]
+[ext_resource type="PackedScene" uid="uid://bqvtwhtay44km" path="res://assets/enemies/rat/street_rat_4k.gltf" id="2_88lvm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ni7gf"]
 height = 1.0
 radius = 0.1
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Rat" type="CharacterBody3D" groups=["RAT"]]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
-collision_layer = 2
-collision_mask = 3
-script = ExtResource("1_oysj2")
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_j7rg1")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="street_rat_4k" parent="Pivot" instance=ExtResource("1_4wdfr")]
+[node name="street_rat_4k" parent="Pivot" instance=ExtResource("2_88lvm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,28 +1,35 @@
 extends Node3D
 
 @onready var PLAYER = $Player
-enum Enemy_Type {Rat}
 
-var RAT = preload("res://pre_fabs/enemy.tscn")
+var RAT_SCENE = preload("res://pre_fabs/rat.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	call_deferred("spawn_enemies")
+	var spawn_timer = Timer.new()
+	spawn_timer.wait_time = 8
+	spawn_timer.one_shot = false
+	spawn_timer.timeout.connect(_timed_spawner)
+	spawn_timer.autostart = true
+	add_child(spawn_timer)
+	spawn_enemies(20)
 
 func _process(delta: float) -> void:
-	spawn_enemy(Enemy_Type.Rat)
+	pass
 
+func _timed_spawner():
+	spawn_enemies(5) 
 
-func spawn_enemies():
-	for i in range(20):
+func spawn_enemies(count:int):
+	for i in range(count):
 		spawn_enemy(Enemy_Type.Rat)
 		
-func spawn_enemy(enemy_type:Enemy_Type):
+func spawn_enemy(enemy_type):
 	var location = get_spawn_location()
 	var enemy
 	match enemy_type:
 		Enemy_Type.Rat:
-			enemy = RAT.instantiate()
+			enemy = RAT_SCENE.instantiate()
 			enemy.initialize(PLAYER, location)
 			$Enemies/Rats.add_child(enemy)
 

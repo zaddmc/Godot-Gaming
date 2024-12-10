@@ -3,6 +3,8 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var HEALTH:float = 100
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -25,6 +27,18 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
-
-
+	#collision_detector()
 	move_and_slide()
+
+func collision_detector():
+	# Probably redundant
+	for index in range(get_slide_collision_count()):
+		var collision = get_slide_collision(index)
+		if collision.get_collider().name == "plane":
+			continue
+		print(collision.get_collider().name)
+
+func _on_area_3d_hit(hit_group) -> void:
+	HEALTH -= 5
+	print(HEALTH)
+	
