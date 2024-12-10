@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 
-const SPEED = 2.0
-const JUMP_VELOCITY = 4.5
-var target 
+const SPEED := 2.0
+const JUMP_VELOCITY := 4.5
+var target:CharacterBody3D 
 
-func initialize(player, start_pos):
+func initialize(player:CharacterBody3D, start_pos:Vector3):
 	target = player
 	look_at_from_position(start_pos, start_pos + Vector3.FORWARD)
 
@@ -26,6 +26,5 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
-
 
 	move_and_slide()

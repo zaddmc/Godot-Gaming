@@ -1,8 +1,8 @@
 extends Node3D
 
-@onready var PLAYER = $Player
+@export var PLAYER:CharacterBody3D
 
-var RAT_SCENE = preload("res://pre_fabs/rat.tscn")
+@export var RAT_SCENE:PackedScene = preload("res://pre_fabs/rat.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,14 +34,12 @@ func spawn_enemy(enemy_type):
 			$Enemies/Rats.add_child(enemy)
 
 func get_spawn_location() -> Vector3:
-	#var player_position = PLAYER.global_position
 	var total_top_left = $plane/Top_left.global_position
 	var total_bottom_right = $plane/Bottom_right.global_position
 	var anti_top_left = $Player/Spawning_Cylinders/Anti_top_left.global_position
 	var anti_bottom_right = $Player/Spawning_Cylinders/Anti_bottom_right.global_position
-	#var anti_spawn_area = $Player/Spawning_Cylinders/Anti_Spawn_area.get_aabb().size
 
-	var point = Vector3(randf_range(total_top_left.x, total_bottom_right.x), 0, randf_range(total_top_left.z, total_bottom_right.z))
+	var point := Vector3(randf_range(total_top_left.x, total_bottom_right.x), 0, randf_range(total_top_left.z, total_bottom_right.z))
 	while is_in_square(point, anti_top_left, anti_bottom_right):
 		point = Vector3(randf_range(total_top_left.x, total_bottom_right.x), 0, randf_range(total_top_left.z, total_bottom_right.z))
 

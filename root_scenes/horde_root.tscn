@@ -20,8 +20,9 @@ material = SubResource("StandardMaterial3D_sqcv1")
 [sub_resource type="BoxMesh" id="BoxMesh_smg34"]
 size = Vector3(14.455, 1, 12.84)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PLAYER")]
 script = ExtResource("1_13ihl")
+PLAYER = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 5, 0)

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED := 5.0
+const JUMP_VELOCITY := 4.5
 
 var HEALTH:float = 100
 

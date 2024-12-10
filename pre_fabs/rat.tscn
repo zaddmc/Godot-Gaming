@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dijtra4eo1s0e"]
+[gd_scene load_steps=4 format=3 uid="uid://c61ou66gko66y"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_j7rg1"]
 [ext_resource type="PackedScene" uid="uid://bqvtwhtay44km" path="res://assets/enemies/rat/street_rat_4k.gltf" id="2_88lvm"]
