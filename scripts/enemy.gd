@@ -1,9 +1,12 @@
+class_name Enemy
 extends CharacterBody3D
 
 
 const SPEED := 2.0
 const JUMP_VELOCITY := 4.5
 var target:CharacterBody3D 
+
+var HEALTH:float = 100
 
 func initialize(player:CharacterBody3D, start_pos:Vector3):
 	target = player
@@ -28,3 +31,9 @@ func _physics_process(delta: float) -> void:
 		$Pivot.basis = Basis.looking_at(direction)
 
 	move_and_slide()
+
+func take_damage(damage_amount:float):
+	HEALTH -= damage_amount
+	
+	if HEALTH <= 0:
+		get_parent().remove_child(self)

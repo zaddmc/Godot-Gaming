@@ -38,7 +38,9 @@ func collision_detector():
 			continue
 		print(collision.get_collider().name)
 
-func _on_area_3d_hit(hit_group) -> void:
+func _on_area_3d_hit(hitter:Enemy) -> void:
 	HEALTH -= 5
 	print(HEALTH)
+	
+	hitter.take_damage(10)
 	
